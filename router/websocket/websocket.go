@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pterodactyl/wings/internal/models"
+	"github.com/LittleBigBug/ptero-wings/internal/models"
 
 	"emperror.dev/errors"
 	"github.com/apex/log"
@@ -18,13 +18,13 @@ import (
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
 
-	"github.com/pterodactyl/wings/system"
+	"github.com/LittleBigBug/ptero-wings/system"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/environment/docker"
-	"github.com/pterodactyl/wings/router/tokens"
-	"github.com/pterodactyl/wings/server"
+	"github.com/LittleBigBug/ptero-wings/config"
+	"github.com/LittleBigBug/ptero-wings/environment"
+	"github.com/LittleBigBug/ptero-wings/environment/docker"
+	"github.com/LittleBigBug/ptero-wings/router/tokens"
+	"github.com/LittleBigBug/ptero-wings/server"
 )
 
 const (

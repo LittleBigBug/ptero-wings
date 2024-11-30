@@ -14,7 +14,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/pterodactyl/wings/internal/ufs"
+	"github.com/LittleBigBug/ptero-wings/internal/ufs"
 )
 
 type testUnixFS struct {

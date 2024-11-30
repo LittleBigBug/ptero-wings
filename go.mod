@@ -1,4 +1,4 @@
-module github.com/pterodactyl/wings
+module github.com/LittleBigBug/ptero-wings
 
 go 1.21.0
 

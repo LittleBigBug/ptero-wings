@@ -22,10 +22,10 @@ import (
 	"github.com/docker/docker/pkg/parsers/operatingsystem"
 	"github.com/spf13/cobra"
 
-	"github.com/pterodactyl/wings/config"
-	"github.com/pterodactyl/wings/environment"
-	"github.com/pterodactyl/wings/loggers/cli"
-	"github.com/pterodactyl/wings/system"
+	"github.com/LittleBigBug/ptero-wings/config"
+	"github.com/LittleBigBug/ptero-wings/environment"
+	"github.com/LittleBigBug/ptero-wings/loggers/cli"
+	"github.com/LittleBigBug/ptero-wings/system"
 )
 
 const (
