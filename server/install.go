@@ -428,6 +428,12 @@ func (ip *InstallationProcess) Execute() (string, error) {
 				Type:     mount.TypeBind,
 				ReadOnly: false,
 			},
+			{
+				Target:   "/mnt/server-layers",
+				Source:   config.Get().System.LayerDirectory,
+				Type:     mount.TypeBind,
+				ReadOnly: false,
+			},
 		},
 		Resources: ip.resourceLimits(),
 		Tmpfs: map[string]string{

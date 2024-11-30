@@ -27,6 +27,11 @@ func (s *Server) Mounts() []environment.Mount {
 			Source:   s.Filesystem().Path(),
 			ReadOnly: false,
 		},
+		{
+			Target:   "/mnt/server-layers",
+			Source:   config.Get().System.LayerDirectory,
+			ReadOnly: false,
+		},
 	}
 
 	// Handle mounting a generated `/etc/passwd` if the feature is enabled.

@@ -141,6 +141,9 @@ type SystemConfiguration struct {
 	// should be created. This supports environments running docker-in-docker.
 	TmpDirectory string `default:"/tmp/pterodactyl" json:"-" yaml:"tmp_directory"`
 
+	// Directory where PteroFuse server layers will be stored (de-duplicated files)
+	LayerDirectory string `default:"/var/lib/pterodactyl/layers" json:"-" yaml:"layer_directory"`
+
 	// The user that should own all of the server files, and be used for containers.
 	Username string `default:"pterodactyl" yaml:"username"`
 
