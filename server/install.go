@@ -453,6 +453,11 @@ func (ip *InstallationProcess) Execute() (string, error) {
 		return "", err
 	}
 
+	// Do the same for the layers data folder
+	if err := EnsureLayerDataDirectoryExists(); err != nil {
+		return "", err
+	}
+
 	ip.Server.Log().WithField("install_script", ip.tempDir()+"/install.sh").Info("creating install container for server process")
 	// Remove the temporary directory when the installation process finishes for this server container.
 	defer func() {

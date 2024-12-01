@@ -125,6 +125,11 @@ func rootCmdRun(cmd *cobra.Command, _ []string) {
 		return
 	}
 
+	if err := server.EnsureLayerDataDirectoryExists(); err != nil {
+		log.Error("could not create layer data directory")
+		return
+	}
+
 	pclient := remote.New(
 		config.Get().PanelLocation,
 		remote.WithCredentials(config.Get().AuthenticationTokenId, config.Get().AuthenticationToken),
