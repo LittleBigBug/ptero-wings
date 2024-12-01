@@ -89,10 +89,10 @@ jobs:
 
       - name: Rename artifacts
         run: |
-          mv ~/artifacts/wings_linux_amd64 ./
-          mv ~/artifacts/wings_linux_arm64 ./
-          mv ~/artifacts/wings_linux_amd64_debug ./
-          mv ~/artifacts/wings_linux_arm64_debug ./
+          mv ~/artifacts/wings_linux_amd64/wings ./wings_linux_amd64
+          mv ~/artifacts/wings_linux_arm64/wings ./wings_linux_amd64
+          mv ~/artifacts/wings_linux_amd64_debug/wings ./wings_linux_amd64
+          mv ~/artifacts/wings_linux_arm64_debug/wings ./wings_linux_amd64
           ls -la ./wings_linux_amd64
 
       - name: Create Prerelease
