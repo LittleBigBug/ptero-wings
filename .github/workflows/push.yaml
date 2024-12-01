@@ -101,8 +101,8 @@ jobs:
           name: continuous
           tag_name: continuous
           files: |
-            ~/artifacts/wings_linux_amd64
-            ~/artifacts/wings_linux_arm64
-            ~/artifacts/wings_linux_amd64_debug
-            ~/artifacts/wings_linux_arm64_debug
+            wings_linux_amd64
+            wings_linux_arm64
+            wings_linux_amd64_debug
+            wings_linux_arm64_debug
           fail_on_unmatched_files: true
