@@ -88,6 +88,7 @@ jobs:
           merge-multiple: true
 
       - name: Unzip artifacts
+        shell: "bash"
         run: |
           for f in wings_linux_*.zip; do unzip -p "$f" > "${f%.zip}"; done
 
