@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04]
-        go: ["1.22.6", "1.23.0"]
+        go: ["1.23.0"]
         goos: [linux]
         goarch: [amd64, arm64]
 
@@ -75,3 +75,27 @@ jobs:
         with:
           name: wings_linux_${{ matrix.goarch }}_debug
           path: dist/wings_debug
+
+  continuous-release:
+    name: Continuous Release
+    runs-on: ubuntu-22.04
+    needs: build-and-test
+    steps:
+      - name: Download wings artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: wings_linux_*
+          merge-multiple: true
+
+      - name: Create Prerelease
+        uses: softprops/action-gh-release@v1
+        with:
+          prerelease: true
+          name: continuous
+          tag_name: continuous
+          files: |
+            wings_linux_amd64
+            wings_linux_arm64
+            wings_linux_amd64_debug
+            wings_linux_arm64_debug
+          fail_on_unmatched_files: true
