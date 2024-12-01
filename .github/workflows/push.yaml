@@ -84,15 +84,16 @@ jobs:
       - name: Download wings artifacts
         uses: actions/download-artifact@v4
         with:
+          path: artifacts
           pattern: wings_linux_*
           merge-multiple: true
 
-      - name: Unzip artifacts
+      - name: Rename artifacts
         run: |
-          unzip -p wings_linux_amd64.zip > wings_linux_amd64
-          unzip -p wings_linux_arm64.zip > wings_linux_arm64
-          unzip -p wings_linux_amd64_debug.zip > wings_linux_amd64_debug
-          unzip -p wings_linux_arm64_debug.zip > wings_linux_arm64_debug
+          mv artifacts/wings_linux_amd64/wings wings_linux_amd64
+          mv artifacts/wings_linux_arm64/wings wings_linux_arm64
+          mv artifacts/wings_linux_amd64_debug/wings wings_linux_amd64_debug
+          mv artifacts/wings_linux_arm64_debug/wings wings_linux_arm64_debug
 
       - name: Create Prerelease
         uses: softprops/action-gh-release@v1
