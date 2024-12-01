@@ -88,9 +88,11 @@ jobs:
           merge-multiple: true
 
       - name: Unzip artifacts
-        shell: "bash"
         run: |
-          for f in wings_linux_*.zip; do unzip -p "$f" > "${f%.zip}"; done
+          unzip -p wings_linux_amd64.zip > wings_linux_amd64
+          unzip -p wings_linux_arm64.zip > wings_linux_arm64
+          unzip -p wings_linux_amd64_debug.zip > wings_linux_amd64_debug
+          unzip -p wings_linux_arm64_debug.zip > wings_linux_arm64_debug
 
       - name: Create Prerelease
         uses: softprops/action-gh-release@v1
