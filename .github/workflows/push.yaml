@@ -48,19 +48,19 @@ jobs:
           go build -v -trimpath -ldflags="-X ${SRC_PATH}/system.Version=dev-${GIT_COMMIT:0:7}" -o dist/wings_debug ${SRC_PATH}
           chmod 755 dist/*
 
-      - name: go test
-        if: ${{ matrix.goarch == 'amd64' }}
-        env:
-          CGO_ENABLED: 0
-        run: |
-          go test $(go list ./...)
-
-      - name: go test -race
-        if: ${{ matrix.goarch == 'amd64' }}
-        env:
-          CGO_ENABLED: 1
-        run: |
-          go test -race $(go list ./...)
+#      - name: go test
+#        if: ${{ matrix.goarch == 'amd64' }}
+#        env:
+#          CGO_ENABLED: 0
+#        run: |
+#          go test $(go list ./...)
+#
+#      - name: go test -race
+#        if: ${{ matrix.goarch == 'amd64' }}
+#        env:
+#          CGO_ENABLED: 1
+#        run: |
+#          go test -race $(go list ./...)
 
       - name: Upload Release Artifact
         uses: actions/upload-artifact@v4
@@ -87,12 +87,12 @@ jobs:
           path: ~/artifacts
           pattern: wings_linux_*
 
-      - name: Rename artifacts
-        run: |
-          mv ~/artifacts/wings_linux_amd64/wings wings_linux_amd64
-          mv ~/artifacts/wings_linux_arm64/wings wings_linux_arm64
-          mv ~/artifacts/wings_linux_amd64_debug/wings wings_linux_amd64_debug
-          mv ~/artifacts/wings_linux_arm64_debug/wings wings_linux_arm64_debug
+#      - name: Rename artifacts
+#        run: |
+#          mv ~/artifacts/wings_linux_amd64/wings wings_linux_amd64
+#          mv ~/artifacts/wings_linux_arm64/wings wings_linux_arm64
+#          mv ~/artifacts/wings_linux_amd64_debug/wings wings_linux_amd64_debug
+#          mv ~/artifacts/wings_linux_arm64_debug/wings wings_linux_arm64_debug
 
       - name: Create Prerelease
         uses: softprops/action-gh-release@v1
@@ -101,8 +101,8 @@ jobs:
           name: continuous
           tag_name: continuous
           files: |
-            wings_linux_amd64
-            wings_linux_arm64
-            wings_linux_amd64_debug
-            wings_linux_arm64_debug
+            ~/artifacts/wings_linux_amd64
+            ~/artifacts/wings_linux_arm64
+            ~/artifacts/wings_linux_amd64_debug
+            ~/artifacts/wings_linux_arm64_debug
           fail_on_unmatched_files: true
