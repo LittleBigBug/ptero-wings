@@ -153,6 +153,7 @@ func (s *Server) GetEnvironmentVariables() []string {
 		fmt.Sprintf("SERVER_MEMORY=%d", s.MemoryLimit()),
 		fmt.Sprintf("SERVER_IP=%s", s.Config().Allocations.DefaultMapping.Ip),
 		fmt.Sprintf("SERVER_PORT=%d", s.Config().Allocations.DefaultMapping.Port),
+		fmt.Sprintf("SERVER_ID=%s", s.ID()),
 	}
 
 eloop:
