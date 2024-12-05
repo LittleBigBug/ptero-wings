@@ -3,6 +3,7 @@ package server
 import (
 	"context"
 	"fmt"
+	"os"
 	"time"
 
 	"emperror.dev/errors"
@@ -207,10 +208,18 @@ func (s *Server) onBeforeStart() error {
 
 	if config.Get().System.CheckPermissionsOnBoot {
 		s.PublishConsoleOutputFromDaemon("Ensuring file permissions are set correctly, this could take a few seconds...")
+
 		// Ensure all the server file permissions are set correctly before booting the process.
 		s.Log().Debug("chowning server root directory...")
 		if err := s.Filesystem().Chown("/"); err != nil {
 			return errors.WithMessage(err, "failed to chown root server directory during pre-boot process")
+		}
+
+		uid := config.Get().System.User.Uid
+		gid := config.Get().System.User.Gid
+		layerDir := config.Get().System.LayerDirectory
+		if err := os.Chown(layerDir, uid, gid); err != nil {
+			return errors.WithMessage(err, "failed to chown server layer directory during pre-boot process")
 		}
 	}
 
